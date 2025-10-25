@@ -13,7 +13,7 @@ Pytorch implementation for our paper: [A Recipe for Watermarking Diffusion Model
 
 You can either use conda or pip to setup the environment.
 
-If you use pip, make sure you have `Python 3.10+` installed, then run:
+If you use pip, make sure you have `Python 3.12+` installed, then run:
 
 ```bash
 pip install -r requirements.txt
@@ -22,7 +22,7 @@ pip install -r requirements.txt
 If you use conda, create a new conda environment and install the dependencies:
 
 ```bash
-conda create -n watermark python=3.10 -y
+conda create -n watermark python=3.12 -y
 conda activate watermark
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
 pip install -r requirements.txt
