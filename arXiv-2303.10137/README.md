@@ -36,7 +36,14 @@ pip install -r requirements.txt
 To perform watermark embedding and detection, we need to first train a StegaStamp model. Here we provide an example of training a StegaStamp model on CIFAR10 dataset, and then use the trained model to embed and detect watermarks. You can change the dataset to other datasets such as CelebA, ImageNet, etc.
 
 ```bash
-python train.py --dataset CIFAR10 --input_dir ./datasets --output_dir ./output/CIFAR10 --bit_length 64 --num_epochs 25 --batch_size 64 --device gpu
+python train.py \
+  --dataset CIFAR10 \
+  --input_dir ./datasets \
+  --output_dir ./output/CIFAR10 \
+  --bit_length 64 \
+  --num_epochs 25 \
+  --batch_size 64 \
+  --accelerator gpu
 ```
 
 After training, you should find the trained model checkpoint in `./output/CIFAR10/stegastamp.ckpt`.
@@ -44,7 +51,15 @@ After training, you should find the trained model checkpoint in `./output/CIFAR1
 Now, you can use the trained StegaStamp model to embed watermarks into images and detect them. Here is an example of embedding and detecting watermarks on CIFAR10 dataset:
 
 ```bash
-python embed_watermark.py --checkpoint_path ./output/CIFAR10/stegastamp.ckpt --dataset CIFAR10 --input_dir ./datasets --output_dir ./output/CIFAR10/ --batch_size 64 --device cuda --identical_fingerprints --check
+python embed_watermark.py \
+  --checkpoint_path ./output/CIFAR10/stegastamp.ckpt \
+  --dataset CIFAR10 \
+  --input_dir ./datasets \
+  --output_dir ./output/CIFAR10 \
+  --batch_size 64 \
+  --device cuda \
+  --identical_fingerprints \
+  --check
 ```
 
 We use `seed` and `identical_fingerprints` to ensure that the same fingerprints are used for embedding and detection. The `--check` flag is used to validate the accuracy of watermark detection.
@@ -52,7 +67,14 @@ We use `seed` and `identical_fingerprints` to ensure that the same fingerprints 
 Finally, you can detect the watermarks from the watermarked images using the following command:
 
 ```bash
-python detect_watermark.py --checkpoint_path ./output/CIFAR10/stegastamp.ckpt --dataset CIFAR10 --input_dir ./datasets --output_dir ./output/CIFAR10 --batch_size 64 --device cuda --identical_fingerprints
+python detect_watermark.py \
+  --checkpoint_path ./output/CIFAR10/stegastamp.ckpt \
+  --dataset CIFAR10 \
+  --input_dir ./datasets \
+  --output_dir ./output/CIFAR10 \
+  --batch_size 64 \
+  --device cuda \
+  --identical_fingerprints
 ```
 
 ## Citation
