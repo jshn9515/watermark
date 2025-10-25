@@ -69,7 +69,7 @@ parser.add_argument(
     help='Learning rate. Default: 0.0001.',
 )
 parser.add_argument(
-    '--device',
+    '--accelerator',
     type=str,
     default='cpu',
     choices=['cpu', 'gpu'],
@@ -131,7 +131,7 @@ if __name__ == '__main__':
         save_on_exception=True,
     )
     trainer = pl.Trainer(
-        accelerator=args.device,
+        accelerator=args.accelerator,
         max_epochs=args.num_epochs,
         logger=logger,
         callbacks=checkpoints,
