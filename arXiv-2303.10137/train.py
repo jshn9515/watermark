@@ -1,4 +1,5 @@
 import argparse
+import multiprocessing
 import os
 
 import lightning as pl
@@ -111,7 +112,7 @@ if __name__ == '__main__':
         dataset,
         batch_size=args.batch_size,
         shuffle=True,
-        num_workers=0,
+        num_workers=multiprocessing.cpu_count(),
     )
 
     net = StegaStampModule(args)
