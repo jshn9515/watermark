@@ -1,0 +1,8 @@
+# Train StegaStamp model
+python -Wignore train.py --dataset CIFAR10 --input_dir ./datasets --output_dir ./results/CIFAR10 --bit_length 64 --num_epochs 25 --batch_size 64 --accelerator gpu
+
+# Embed watermark into images
+python -Wignore embed.py --checkpoint_path ./results/CIFAR10/stegastamp.ckpt --dataset CIFAR10 --input_dir ./datasets --output_dir ./results/CIFAR10 --batch_size 64 --device cpu --identical_fingerprints --check
+
+# Detect watermark from images
+python -Wignore detect.py --checkpoint_path ./results/CIFAR10/stegastamp.ckpt --dataset CIFAR10 --input_dir ./datasets --output_dir ./results/CIFAR10 --batch_size 64 --device cpu --identical_fingerprints

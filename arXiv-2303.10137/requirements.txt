@@ -1,0 +1,5 @@
+torch
+torchvision
+rich_click
+lightning
+wandb
